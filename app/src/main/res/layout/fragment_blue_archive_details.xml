@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/characterImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/characterImage"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="14dp"
+                android:gravity="center|start"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:gravity="start|center"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:text="@string/shortSentencePlaceHolder"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/nameLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/nameLabel"
+                app:layout_constraintTop_toTopOf="@+id/nameLabel"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/schoolLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/school"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+            <TextView
+                android:id="@+id/school"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:gravity="start|center"
+                android:paddingStart="45dp"
+                android:paddingEnd="10dp"
+                android:text="@string/shortSentencePlaceHolder"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/schoolLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.552"
+                app:layout_constraintStart_toEndOf="@+id/schoolLabel"
+                app:layout_constraintTop_toTopOf="@+id/schoolLabel"
+                app:layout_constraintVertical_bias="1.0" />
+
+
+            <TextView
+                android:id="@+id/damageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/damageType"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/schoolLabel" />
+
+            <TextView
+                android:id="@+id/damage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start|bottom"
+                android:maxLines="100"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/placeHolder"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/damageLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/damageLabel"
+                app:layout_constraintTop_toTopOf="@+id/damageLabel"
+                app:layout_constraintVertical_bias="0.357" />
+
+            <TextView
+                android:id="@+id/birthdayLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/birthday"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/damageLabel" />
+
+            <TextView
+                android:id="@+id/birthday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start|bottom"
+                android:maxLines="100"
+                android:paddingStart="35dp"
+                android:paddingEnd="10dp"
+                android:text="@string/your_long_text_goes_here"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/birthdayLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/birthdayLabel"
+                app:layout_constraintTop_toTopOf="@+id/birthdayLabel"
+                app:layout_constraintVertical_bias="0.428"
+                tools:ignore="RtlSymmetry" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

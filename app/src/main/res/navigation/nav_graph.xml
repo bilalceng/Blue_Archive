@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/blueArchiveNameAndPhotoFragment2">
+
+    <fragment
+        android:id="@+id/blueArchiveNameAndPhotoFragment2"
+        android:name="com.bilalberekgm.bluearchive.ui.fragments.BlueArchiveNameAndPhotoFragment"
+        android:label="fragment_blue_archive_name_and_photo"
+        tools:layout="@layout/fragment_blue_archive_name_and_photo" >
+
+        <action
+            android:id="@+id/action_blueArchiveNameAndPhotoFragment2_to_blueArchiveDetailsFragment"
+            app:destination="@id/blueArchiveDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blueArchiveStudentsPageFragment"
+        android:name="com.bilalberekgm.bluearchive.ui.fragments.BlueArchiveStudentsPageFragment"
+        android:label="fragment_blue_archive_students_page"
+        tools:layout="@layout/fragment_blue_archive_students_page" />
+    <fragment
+        android:id="@+id/blueArchiveDetailsFragment"
+        android:name="com.bilalberekgm.bluearchive.ui.fragments.BlueArchiveDetailsFragment"
+        android:label="fragment_blue_archive_details"
+        tools:layout="@layout/fragment_blue_archive_details" >
+        <argument
+            android:name="characterData"
+            app:argType="com.bilalberekgm.bluearchive.model.Data" />
+    </fragment>
+    <argument
+        android:name="character"
+        app:argType="com.bilalberekgm.bluearchive.model.Data" />
+</navigation>

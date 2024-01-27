@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Blue Archive</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">title</string>
+    <string name="character_photo">character photo</string>
+    <string name="search">search</string>
+    <string name="name">name</string>
+    <string name="school">school</string>
+    <string name="background">background</string>
+    <string name="hobbies">hobbies</string>
+    <string name="your_long_text_goes_here">Your long text goes here...</string>
+    <string name="age">age</string>
+    <string name="height">height</string>
+    <string name="weapon">weapon</string>
+    <string name="damage">damage</string>
+    <string name="names">names</string>
+    <string name="damageType">damage type</string>
+    <string name="birthday">birthday</string>
+    <string name="placeHolder">Your long text goes here...</string>
+    <string name="shortSentencePlaceHolder">short sentence</string>
+</resources>
