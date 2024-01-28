@@ -1,14 +1,12 @@
 package com.bilalberekgm.bluearchive.di
 
-import com.bilalberekgm.bluearchive.adapter.BlueArchiveAdaptor
+
 import com.bilalberekgm.bluearchive.domain.repository.BlueArchiveRepositoryRepository
 import com.bilalberekgm.bluearchive.viewmodel.BlueArchiveViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.qualifiers.ActivityContext
-import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.android.scopes.ViewModelScoped
 
 
@@ -20,8 +18,6 @@ object ViewModelModule {
     @ViewModelScoped
     fun provideViewModel(repository: BlueArchiveRepositoryRepository) =
         BlueArchiveViewModel(repository)
-
-
 }
 
 

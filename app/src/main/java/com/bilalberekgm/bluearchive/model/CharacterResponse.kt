@@ -1,7 +1,6 @@
 package com.bilalberekgm.bluearchive.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+
 import java.io.Serializable
 
 

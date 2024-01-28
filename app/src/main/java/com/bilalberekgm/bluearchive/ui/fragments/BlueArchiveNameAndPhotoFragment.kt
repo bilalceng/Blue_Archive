@@ -1,7 +1,6 @@
 package com.bilalberekgm.bluearchive.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -21,23 +20,24 @@ import com.bilalberekgm.bluearchive.ui.BlueArchiveActivity
 import com.bilalberekgm.bluearchive.viewmodel.BlueArchiveViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class BlueArchiveNameAndPhotoFragment : Fragment() {
-
     private lateinit var bottomNav:BottomNavigationView
     private var isShowBottomNav:Boolean = true
     private lateinit var binding: FragmentBlueArchiveNameAndPhotoBinding
     private val viewModel: BlueArchiveViewModel by viewModels()
-    private lateinit var bluArchiveAdaptor: BlueArchiveAdaptor
+    @Inject
+     lateinit var bluArchiveAdaptor: BlueArchiveAdaptor
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        bluArchiveAdaptor = BlueArchiveAdaptor(lifecycle = lifecycle, coroutineScope = lifecycleScope)
         binding = FragmentBlueArchiveNameAndPhotoBinding.inflate(layoutInflater,container,false)
         bottomNav =  (activity as BlueArchiveActivity).bottomNav
         return binding.root
@@ -57,6 +57,7 @@ class BlueArchiveNameAndPhotoFragment : Fragment() {
         val searchItem = menu.findItem(R.id.search)
         val searchView = searchItem.actionView as SearchView
         handleTextInputs(searchView)
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -68,6 +69,7 @@ class BlueArchiveNameAndPhotoFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 isShowBottomNav = newText == ""
+                viewModel.onQueryChanged(newText!!)
                 controlBottomNav(isShowBottomNav)
                 return true
             }
@@ -76,11 +78,15 @@ class BlueArchiveNameAndPhotoFragment : Fragment() {
 
     private fun handleFlowData(){
         binding.apply {
-            lifecycleScope.launchWhenCreated {
-                viewModel.characterList.collect{
-                    bluArchiveAdaptor.setOriginalData(it)
+
+                viewModel.filteredCharacterList.observe(viewLifecycleOwner){
+                    lifecycleScope.launch {
+                        if(it != null){
+                            bluArchiveAdaptor.notifyDataSetChanged()
+                            bluArchiveAdaptor.submitData(it)
+                        }
+                    }
                 }
-            }
             setupRecyclerView()
         }
     }
@@ -100,7 +106,8 @@ class BlueArchiveNameAndPhotoFragment : Fragment() {
 
     private fun goToBlueArchiveDetailFragment(){
         bluArchiveAdaptor.setOnCharacterClickListener {
-           val action = BlueArchiveNameAndPhotoFragmentDirections.actionBlueArchiveNameAndPhotoFragment2ToBlueArchiveDetailsFragment(it)
+           val action = BlueArchiveNameAndPhotoFragmentDirections
+               .actionBlueArchiveNameAndPhotoFragment2ToBlueArchiveDetailsFragment(it)
             findNavController().navigate(action)
         }
     }

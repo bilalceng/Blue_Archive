@@ -1,5 +1,6 @@
 package com.bilalberekgm.bluearchive.paging
 
+
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.bilalberekgm.bluearchive.domain.repository.BlueArchiveRepositoryRepository
@@ -7,13 +8,14 @@ import com.bilalberekgm.bluearchive.model.Data
 import retrofit2.HttpException
 
 class BlueArchivePagingSource(
-    private var repository: BlueArchiveRepositoryRepository
-): PagingSource<Int,Data>() {
+    private var repository: BlueArchiveRepositoryRepository,
+): PagingSource<Int,Data>(){
 
     override fun getRefreshKey(state: PagingState<Int,Data>): Int? {
         return null
     }
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int,Data> {
+
         return try {
             val currentPage = params.key ?: 1
             val characterPerPage = 5

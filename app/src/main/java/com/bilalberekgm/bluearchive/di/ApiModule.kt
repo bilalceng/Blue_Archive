@@ -1,7 +1,6 @@
 package com.bilalberekgm.bluearchive.di
 
 import com.bilalberekgm.bluearchive.api.ApiService
-import com.bilalberekgm.bluearchive.util.Util
 import com.bilalberekgm.bluearchive.util.Util.BASE_URL
 import com.bilalberekgm.bluearchive.util.Util.CONNECTION_TIMEOUT
 import com.google.gson.Gson
@@ -10,13 +9,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 
