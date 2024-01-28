@@ -1,5 +1,6 @@
 package com.bilalberekgm.bluearchive.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -76,6 +77,7 @@ class BlueArchiveNameAndPhotoFragment : Fragment() {
         })
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun handleFlowData(){
         binding.apply {
 
@@ -84,6 +86,7 @@ class BlueArchiveNameAndPhotoFragment : Fragment() {
                         if(it != null){
                             bluArchiveAdaptor.notifyDataSetChanged()
                             bluArchiveAdaptor.submitData(it)
+                            bluArchiveAdaptor.notifyDataSetChanged()
 
                         }
                     }
