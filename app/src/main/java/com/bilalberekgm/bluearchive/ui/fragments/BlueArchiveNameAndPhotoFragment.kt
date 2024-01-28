@@ -84,6 +84,7 @@ class BlueArchiveNameAndPhotoFragment : Fragment() {
                         if(it != null){
                             bluArchiveAdaptor.notifyDataSetChanged()
                             bluArchiveAdaptor.submitData(it)
+
                         }
                     }
                 }

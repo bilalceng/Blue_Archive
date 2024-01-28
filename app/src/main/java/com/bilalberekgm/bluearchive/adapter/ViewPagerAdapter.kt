@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bilalberekgm.bluearchive.databinding.ItemViewPagerBinding
 import com.bilalberekgm.bluearchive.studentModel.Data
 import com.bumptech.glide.Glide
+import dagger.hilt.android.scopes.ActivityScoped
+import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
-
+@FragmentScoped
 class ViewPagerAdapter @Inject constructor():RecyclerView.Adapter<ViewPagerAdapter.ViewPagerHolder>() {
     private lateinit var context: Context
 

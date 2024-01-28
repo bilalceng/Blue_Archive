@@ -17,12 +17,14 @@ import com.bilalberekgm.bluearchive.model.CharacterResponse
 import com.bilalberekgm.bluearchive.model.Data
 import com.bilalberekgm.bluearchive.paging.BlueArchivePagingSource
 import com.bumptech.glide.Glide
+import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import okhttp3.internal.notify
 import java.util.Locale
 import javax.inject.Inject
-
+@FragmentScoped
 class BlueArchiveAdaptor @Inject constructor(): PagingDataAdapter<Data,BlueArchiveAdaptor.ViewHolder>(differCallback){
     private lateinit var onCharacterClickedListener: (Data) -> Unit
     private lateinit var binding: RecyclerViewItemBinding
@@ -68,6 +70,7 @@ class BlueArchiveAdaptor @Inject constructor(): PagingDataAdapter<Data,BlueArchi
         item?.let {
             holder.bind(item)
         }
+
         holder.itemView.setOnClickListener {
             onCharacterClickedListener.let{
                 Log.d("listonToclick","$item")

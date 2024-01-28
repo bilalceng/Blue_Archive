@@ -1,6 +1,7 @@
 package com.bilalberekgm.bluearchive.di
 
 
+import com.bilalberekgm.bluearchive.api.ApiService
 import com.bilalberekgm.bluearchive.domain.repository.BlueArchiveRepositoryRepository
 import com.bilalberekgm.bluearchive.viewmodel.BlueArchiveViewModel
 import dagger.Module
@@ -18,6 +19,13 @@ object ViewModelModule {
     @ViewModelScoped
     fun provideViewModel(repository: BlueArchiveRepositoryRepository) =
         BlueArchiveViewModel(repository)
+
+
+    @Provides
+    @ViewModelScoped
+    fun provideBlueArchiveRepository(apiService: ApiService): BlueArchiveRepositoryRepository {
+        return BlueArchiveRepositoryRepository(apiService)
+    }
 }
 
 

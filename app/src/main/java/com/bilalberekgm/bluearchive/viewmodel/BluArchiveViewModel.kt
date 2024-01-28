@@ -72,7 +72,6 @@ class BlueArchiveViewModel @Inject constructor(
             }
             return Resource.Error("Response unsuccessful or body is null")
         } catch (e: Exception) {
-
             return Resource.Error("An error occurred: ${e.message}")
         }
     }
