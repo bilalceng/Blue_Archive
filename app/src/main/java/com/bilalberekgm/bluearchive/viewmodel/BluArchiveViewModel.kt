@@ -1,6 +1,9 @@
 package com.bilalberekgm.bluearchive.viewmodel
 
 
+import android.app.Application
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,6 +20,7 @@ import com.bilalberekgm.bluearchive.paging.BlueArchivePagingSource
 import com.bilalberekgm.bluearchive.studentModel.StudentResponse
 import com.bilalberekgm.bluearchive.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
@@ -49,23 +53,31 @@ class BlueArchiveViewModel @Inject constructor(
     }
     fun fetchStudents() {
         viewModelScope.launch {
-            _liveData.postValue(Resource.Loading())
-            val response = repository.getStudents()
-            _liveData.postValue(handleStudentsResponse(response))
+            try {
+                val response = repository.getStudents()
+                _liveData.postValue(handleStudentsResponse(response))
+            } catch (e: Exception) {
+                _liveData.postValue(Resource.Error(e.message ?: "An error occurred"))
+            }
 
         }
     }
 
     private fun handleStudentsResponse(response: Response<StudentResponse>): Resource<StudentResponse> {
-        if (response.isSuccessful) {
-            response.body()?.let { result ->
-                return Resource.Success(result)
+        try {
+            if (response.isSuccessful) {
+                response.body()?.let { result ->
+                    return Resource.Success(result)
+                }
             }
-        }
-        return Resource.Error(response.message())
+            return Resource.Error("Response unsuccessful or body is null")
+        } catch (e: Exception) {
 
+            return Resource.Error("An error occurred: ${e.message}")
+        }
+    }
     }
 
-}
+
 
 
